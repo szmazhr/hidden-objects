@@ -2,10 +2,10 @@ import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
 
-import App from './App';
+import RouterSwitch from './RouterSwitch';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterSwitch />
   </StrictMode>
 );
