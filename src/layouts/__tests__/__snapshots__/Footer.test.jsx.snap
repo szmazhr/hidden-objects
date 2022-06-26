@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should render correctly 1`] = `
+<DocumentFragment>
+  <footer
+    class="main-footer"
+  >
+    <div
+      class="footer-text"
+    >
+      <p>
+        Made with FavoriteIcon by
+        <a
+          href="https://github.com/szmazhr"
+        >
+          Shahzar Mazhar
+        </a>
+      </p>
+    </div>
+    <div
+      class="footer-icons"
+    >
+      <a
+        href="https://github.com/szmazhr/hidden-objects"
+      >
+        GitHubIcon
+      </a>
+    </div>
+  </footer>
+</DocumentFragment>
+`;

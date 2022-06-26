@@ -1,0 +1,49 @@
+/*---- Sticky Footer----*/
+$footer-height: 60px;
+
+html{
+  position: relative;
+  min-height: 100%;
+}
+
+body{
+  margin-bottom: $footer-height;
+}
+
+footer{
+  position: absolute;
+  width: 100%;
+  height: $footer-height;
+  bottom: 0;
+}
+
+
+/*---- Normal Style ----*/
+.main-footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+  background-color: var(--bkg2);
+  color: var(--text);
+  font-size: 1.2rem;
+
+  a{
+    color: var(--text);
+    transition: color 0.3s ease-out;
+    &:hover{
+      color: var(--accent1);
+    }
+    
+  }
+  .footer-text{
+    p{
+      display: flex;
+      align-items: center;
+      gap: 0.3em;
+    }
+    a{
+      font-weight: 700;
+    }
+  }
+}
