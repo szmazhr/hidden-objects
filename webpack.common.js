@@ -12,7 +12,7 @@ const config = {
         use: ['babel-loader'],
       },
       {
-        test: /\.svg$/,
+        test: /\.(svg|jpe?g|png)$/,
         type: 'asset/resource',
       },
     ],

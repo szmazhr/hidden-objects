@@ -6,6 +6,7 @@ body{
   margin: 0;
   background-color: var(--bkg1);
   font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
 }
 h1{
   font-family: 'Fascinate', cursive;
@@ -20,5 +21,10 @@ h1, h2, h3, h4, h5, h6, p, span{
   transition: filter 0.3s ease-out;
   &:hover{
     filter: brightness(0.9);
+  }
+}
+.smooth-theme-transition{
+  *{
+    transition: background-color 0.3s ease-out, color 0.3s ease-out !important;
   }
 }
