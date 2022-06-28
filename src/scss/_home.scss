@@ -1,0 +1,142 @@
+.cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin: 100px auto;
+  flex-wrap: wrap;
+  max-width: 1440px;
+}
+
+.card {
+  width: 30%;
+  min-width: 300px;
+  background-color: var(--bkg1);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease-out;
+
+  img {
+    width: 100%;
+  }
+
+
+
+  .card-content {
+    position: relative;
+    display: flex;
+
+    .clg-img {
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, var(--bkg1), rgba(0, 0, 0, 0));
+    margin: 0;
+    padding: 0.5em;
+  }
+
+
+  .objectives {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 5px;
+    padding: 0;
+    margin: 10px;
+    transition: transform 0.3s ease-out;
+    transform: scale(0.9);
+
+    :nth-last-child(3) {
+      transform: translateX(200%);
+      z-index: 3;
+    }
+
+    :nth-last-child(2) {
+      transform: translateX(100%);
+      z-index: 2;
+    }
+
+
+    li {
+      width: 50px;
+      transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+      opacity: 0.9;
+
+      img {
+        border-radius: 50%;
+        border: 1px solid var(--accent3);
+        background-color: var(--bkg1);
+      }
+    }
+
+  }
+
+  &:hover {
+    transform: scale(1.03);
+
+    .objectives {
+      transform: scale(1);
+
+      li {
+        transform: translate(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    button {
+      color: var(--accent3);
+    }
+
+    a {
+      color: var(--accent2);
+    }
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: filter 0.3s ease-out;
+    border: none;
+    background-color: var(--bkg2);
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(0.9);
+      color: var(--accent1);
+    }
+  }
+
+}
+
+.refresh {
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}

@@ -6,12 +6,23 @@ import useScrollUp from '../hooks/useScrollUp';
 import useTheme from '../hooks/useTheme';
 
 function Header() {
-  // function Header({ items }) {
   const [scrollUp, setScrollUp] = useScrollUp(true);
   const [mode, toggleMode] = useTheme();
   const icon = mode === 'light' ? <LightMode /> : <DarkMode />;
   const [hover, setHover] = useState();
-  const objectives = useContext(ObjectiveContext);
+  const objectives = useContext(ObjectiveContext) || [];
+
+  const listEl = objectives.map((o) => (
+    <li key={o.id} className={o.found ? 'found' : ''}>
+      <img
+        src={o.imgUrl}
+        alt={o.name}
+        onMouseEnter={() => setHover(o.id)}
+        onMouseLeave={() => setHover('')}
+      />
+      {hover === o.id && <span>{o.name}</span>}
+    </li>
+  ));
 
   return (
     <header
@@ -20,19 +31,7 @@ function Header() {
       onFocus={() => setScrollUp(true)}
     >
       <h1>Hidden Objects</h1>
-      <ul className="objectives">
-        {objectives.map((o) => (
-          <li key={o.id} className={o.found ? 'found' : ''}>
-            <img
-              src={o.imgUrl}
-              alt={o.name}
-              onMouseEnter={() => setHover(o.id)}
-              onMouseLeave={() => setHover('')}
-            />
-            {hover === o.id && <span>{o.name}</span>}
-          </li>
-        ))}
-      </ul>
+      <ul className="objectives">{listEl}</ul>
       <button className="theme-btn" type="button" onClick={toggleMode}>
         {icon}
       </button>
@@ -40,9 +39,3 @@ function Header() {
   );
 }
 export default Header;
-
-/* ------------- Prop Validation -------------*/
-// Header.propTypes = {
-//   items: PropTypes.arrayOf(PropTypes.shape(PropTypes.string, PropTypes.number))
-//     .isRequired,
-// };
