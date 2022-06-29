@@ -1,21 +1,24 @@
-.error-404{
+.error-404 {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  h1{
+
+  h1 {
     font-size: calc(5rem + 3vmin);
     font-weight: 700;
     color: var(--accent1);
     margin-bottom: 1rem;
   }
-  h4{
+
+  h4 {
     font-size: calc(1rem + 1vmin);
     font-weight: 700;
     margin: 0;
   }
-  .btn{
-    background-color: var(--accent1);
-    color: var(--text);
-  }
+}
+
+.btn.home {
+  background-color: var(--accent1);
+  color: var(--text);
 }

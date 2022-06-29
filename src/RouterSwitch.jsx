@@ -6,6 +6,7 @@ import { ObjectiveContext } from './contexts';
 import Challenge from './pages/Challenge';
 import Error404 from './pages/Error404';
 import Home from './pages/Home';
+import Leaderboard from './pages/Leaderboard';
 
 const emptyArray = [];
 function RouterSwitch() {
@@ -72,6 +73,12 @@ function RouterSwitch() {
                 activeChallenge={activeChallenge || {}}
               />
             }
+          />
+          <Route path="leaderboard" element={<Error404 />} />
+          <Route path="leaderboard/:challengeId" element={<Leaderboard />} />
+          <Route
+            path="leaderboard/:challengeId/:scoreId"
+            element={<Leaderboard />}
           />
           <Route path="challenge" element={<Error404 />} />
           <Route path="*" element={<Error404 />} />

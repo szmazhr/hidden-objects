@@ -98,11 +98,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-    button {
+    & a:first-child {
       color: var(--accent3);
     }
 
-    a {
+    & a:last-child {
       color: var(--accent2);
     }
   }
@@ -121,14 +121,15 @@
 
     &:hover {
       filter: brightness(0.9);
-      color: var(--accent1);
+      color: var(--accent1) !important;
     }
   }
 
 }
 
 .refresh {
-  animation: rotate 1s infinite linear;
+  animation: rotate 1.5s infinite linear;
+  color: var(--text);
 }
 
 @keyframes rotate {

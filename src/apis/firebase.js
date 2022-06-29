@@ -6,6 +6,11 @@ import {
   getDocs,
   doc,
   getDoc,
+  addDoc,
+  where,
+  orderBy,
+  limit,
+  query,
 } from 'firebase/firestore';
 
 const firebase = (() => {
@@ -38,13 +43,54 @@ const firebase = (() => {
     return results;
   }
 
+  const submitScore = async (challengeId, name, score) => {
+    try {
+      const docRef = await addDoc(collection(db, 'leaderboard'), {
+        challengeId,
+        score,
+        name,
+      });
+      return docRef.id;
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('Error adding document: ', e);
+      return false;
+    }
+  };
+
+  const getLeaderboard = async (challengeId) => {
+    const results = [];
+    const querySnapshot = await getDocs(
+      query(
+        collection(db, 'leaderboard'),
+        where('challengeId', '==', challengeId),
+        orderBy('score'),
+        limit(50)
+      )
+    );
+    querySnapshot.forEach((result) => {
+      results.push({
+        id: result.id,
+        ...result.data(),
+      });
+    });
+    return results;
+  };
+
+  const getScore = async (scoreId) => {
+    const docSnap = await getDoc(doc(db, 'leaderboard', scoreId));
+    return {
+      id: docSnap.id,
+      ...docSnap.data(),
+    };
+  };
+
   const sendLog = (content) => logEvent(analytics, content);
 
   const validateCords = async (id, cords) => {
     const { cordX, cordY } = cords;
 
-    const docRef = doc(db, 'cords', id);
-    const docSnap = await getDoc(docRef);
+    const docSnap = await getDoc(doc(db, 'cords', id));
     if (docSnap.exists()) {
       const { cordX: objectiveCordX, cordY: objectiveCordY } = docSnap.data();
       if (
@@ -53,14 +99,22 @@ const firebase = (() => {
         cordY > objectiveCordY - 1.5 &&
         cordY < objectiveCordY + 1.5
       ) {
-        return Promise.resolve(true);
+        return true;
       }
-      return Promise.resolve(false);
+      return false;
     }
     // doc.data() will be undefined in this case
     throw new Error(`Objective with id: ${id}, not found`);
   };
-  return { validateCords, getChallenges, sendLog };
+
+  return {
+    validateCords,
+    getChallenges,
+    sendLog,
+    submitScore,
+    getLeaderboard,
+    getScore,
+  };
 })();
 
 export default firebase;

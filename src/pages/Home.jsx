@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import LoopIcon from '@mui/icons-material/Loop';
-import ChallengeCard from '../layouts/ChallengeCard';
+import ChallengeCard from '../components/ChallengeCard';
 
 function Home({ challenges }) {
   return (
@@ -10,7 +10,7 @@ function Home({ challenges }) {
           <ChallengeCard key={challenge.uid} challenge={challenge} />
         ))
       ) : (
-        <LoopIcon className="refresh" />
+        <LoopIcon className="refresh" fontSize="large" />
       )}
     </div>
   );

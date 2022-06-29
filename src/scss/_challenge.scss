@@ -1,0 +1,180 @@
+.challenge-room {
+  position: relative;
+
+  .img-container {
+    width: 100%;
+    max-width: 1440px;
+    padding: 20px;
+    margin: 30px auto;
+    box-shadow: var(--shadow);
+    position: relative;
+
+    >img {
+      min-height: 200px;
+
+      width: 100%;
+    }
+
+    &.active {
+      .img-selection-lens {
+
+        cursor: default;
+      }
+    }
+
+  }
+
+
+  .objectives {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    padding: 0;
+    background-color: var(--bkg1);
+    width: max-content;
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.3s ease-out 1 forwards;
+    position: absolute;
+    top: 80%;
+    left: 80%;
+    z-index: 100;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0.5rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--bkg2);
+      }
+
+      img {
+        width: 40px;
+        border: 1px solid var(--accent3);
+        background-color: var(--bkg1);
+        border-radius: 50%;
+      }
+    }
+
+  }
+
+  .notification {
+    position: fixed;
+    z-index: 999;
+    bottom: 70px;
+    left: 10px;
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: max-content;
+    gap: 25px;
+    animation: 3s slideInOut 2 alternate forwards;
+    background-color: var(--accent3);
+
+    &.success {
+      background-color: rgb(0, 156, 0);
+
+      span {
+        color: white;
+      }
+    }
+
+    &.error {
+      background-color: rgb(255, 0, 0);
+
+      span {
+        color: white;
+      }
+    }
+
+    &.info {
+      background-color: rgb(15, 155, 248);
+
+      span {
+        color: white;
+      }
+    }
+
+    button {
+      width: max-content;
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.3s ease-out;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@keyframes slideInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.img-selection-lens {
+  position: absolute;
+  /*set the size of the lens:*/
+  width: 50px;
+  transform: translate(-50%, -50%);
+  /* initial position of the lens: parentPadding + halfSize */
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  cursor: none;
+  backdrop-filter: contrast(1.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+
+
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    background-color: transparent;
+  }
+
+  &::before {
+    border-color: rgba(255, 255, 255, 0.8);
+    padding: 2px;
+  }
+
+
+}

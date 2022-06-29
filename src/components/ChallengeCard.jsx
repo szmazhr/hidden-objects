@@ -19,9 +19,9 @@ function ChallengeCard({ challenge }) {
         <img src={imgUrl} className="clg-img" alt="challenge" />
       </div>
       <div className="actions">
-        <button className="btn" type="button">
+        <Link className="btn" to={`/leaderboard/${uid}`}>
           <LeaderboardIcon />
-        </button>
+        </Link>
         <Link className="btn" to={`/challenge/${uid}`}>
           <PlayArrow />
         </Link>
