@@ -49,7 +49,7 @@ function RouterSwitch() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/hidden-objects">
       <Routes>
         <Route
           path="/"

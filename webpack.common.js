@@ -26,6 +26,11 @@ const config = {
           'Find Hidden Objects | How fast can you find the hidden objects?',
       },
     }),
+    new HtmlWebpackPlugin({
+      filename: '404.html',
+      template: path.join(__dirname, 'src', '404.html'),
+      inject: false,
+    }),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
